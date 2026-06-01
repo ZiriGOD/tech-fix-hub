@@ -3,129 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viesczy Store | Loja de Fanmades</title>
+    <title>Viesczy Store | Premium Fanmade</title>
     <link rel="stylesheet" href="https://cloudflare.com">
-    
     <style>
-        /* CORE DESIGN INTERNO - BLINDAGEM GITHUB PAGES */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: #000000; color: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; -webkit-font-smoothing: antialiased; }
-        
-        /* Navbar */
-        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background-color: #09090b; border-bottom: 1px solid #1f1f23; position: sticky; top: 0; z-index: 50; }
-        .logo { font-size: 24px; font-weight: 900; color: #dc2626; text-transform: uppercase; letter-spacing: 2px; }
+        body { background-color: #050506; color: #ffffff; font-family: sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        .top-bar { background-color: #dc2626; color: #fff; text-align: center; padding: 8px 10px; font-size: 12px; font-weight: 900; text-transform: uppercase; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 25px 5%; background-color: #09090b; border-bottom: 1px solid #1f1f23; position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 26px; font-weight: 900; color: #dc2626; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; }
         .logo span { color: #ffffff; }
-        .nav-icon { color: #a1a1aa; font-size: 24px; text-decoration: none; transition: 0.3s; }
-        .nav-icon:hover { color: #ef4444; }
-
-        /* Hero section */
-        .hero { text-align: center; padding: 100px 20px; background-color: #020202; position: relative; border-bottom: 1px solid #0f0f11; }
-        .badge { color: #ef4444; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; background-color: #450a0a; border: 1px solid #7f1d1d; padding: 6px 18px; border-radius: 50px; display: inline-block; margin-bottom: 25px; }
-        .hero h2 { font-size: 52px; font-weight: 900; text-transform: uppercase; margin-bottom: 20px; letter-spacing: -1px; }
+        .nav-icon { color: #ffffff; font-size: 22px; text-decoration: none; }
+        .hero { position: relative; padding: 120px 5%; text-align: left; display: flex; align-items: center; background-color: #000; border-bottom: 1px solid #18181b; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(to right, #000 40%, rgba(0,0,0,0.6) 100%), url('https://unsplash.com'); background-size: cover; background-position: center; opacity: 0.5; z-index: 1; }
+        .hero-content { max-width: 650px; z-index: 10; position: relative; }
+        .badge { color: #ef4444; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; background-color: rgba(69, 10, 10, 0.6); border: 1px solid #7f1d1d; padding: 8px 20px; border-radius: 50px; display: inline-block; margin-bottom: 25px; }
+        .hero h2 { font-size: 52px; font-weight: 900; text-transform: uppercase; margin-bottom: 25px; line-height: 1.0; }
         .hero h2 span { color: #dc2626; }
-        .hero p { color: #a1a1aa; font-size: 18px; max-width: 650px; margin: 0 auto 40px auto; line-height: 1.6; }
-        .btn-main { background-color: #dc2626; color: #ffffff; font-weight: 900; text-decoration: none; padding: 16px 40px; border-radius: 12px; font-size: 16px; text-transform: uppercase; display: inline-block; transition: 0.3s; box-shadow: 0 10px 25px rgba(220,38,38,0.25); tracking-spacing: 1px; }
-        .btn-main:hover { background-color: #b91c1c; transform: translateY(-2px); }
-
-        /* Container de Cards */
-        .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
-        .section-title { text-align: center; font-size: 32px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 50px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
-        .card { background-color: #09090b; border: 1px solid #18181b; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-        .card:hover { border-color: #dc2626; transform: translateY(-4px); }
-        .card-img-area { background-color: #121214; height: 200px; display: flex; align-items: center; justify-content: center; font-size: 55px; color: #dc2626; border-bottom: 1px solid #18181b; }
-        .card-info { padding: 30px; }
-        .card-info h4 { font-size: 24px; font-weight: 900; color: #ef4444; text-transform: uppercase; margin-bottom: 12px; letter-spacing: -0.5px; }
-        .card-info p { color: #a1a1aa; font-size: 14px; line-height: 1.6; }
-        .card-action { padding: 0 30px 30px 30px; }
-        .btn-card { display: block; text-align: center; background-color: #121214; color: #ffffff; text-decoration: none; font-weight: bold; padding: 14px; border-radius: 12px; border: 1px solid #27272a; transition: 0.3s; }
-        .btn-card:hover { background-color: #dc2626; border-color: #dc2626; color: #ffffff; }
-
-        /* Footer */
-        .footer { border-top: 1px solid #18181b; background-color: #09090b; padding: 40px; text-align: center; color: #52525b; font-size: 12px; line-height: 1.5; }
+        .hero p { color: #d4d4d8; font-size: 17px; margin-bottom: 40px; line-height: 1.6; }
+        .btn-main { background-color: #dc2626; color: #ffffff; font-weight: 900; text-decoration: none; padding: 16px 40px; border-radius: 10px; text-transform: uppercase; display: inline-block; }
+        .features-bar { background-color: #09090b; border-bottom: 1px solid #18181b; padding: 35px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; text-align: center; }
+        .feature-item i { color: #dc2626; font-size: 28px; margin-bottom: 12px; }
+        .feature-item h5 { font-size: 15px; font-weight: 900; text-transform: uppercase; margin-bottom: 5px; }
+        .feature-item p { color: #71717a; font-size: 13px; }
+        .section-container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h3 { font-size: 36px; font-weight: 900; text-transform: uppercase; }
+        .section-header h3 span { color: #dc2626; }
+        .section-header p { color: #71717a; font-size: 15px; margin-top: 10px; }
+        .row-showcase { display: flex; flex-direction: column; background-color: #09090b; border: 1px solid #18181b; border-radius: 20px; overflow: hidden; margin-bottom: 40px; }
+        .row-img-box { width: 100%; height: 250px; overflow: hidden; }
+        .row-img-box img { width: 100%; height: 100%; object-fit: cover; }
+        .row-content-box { padding: 35px; }
+        .tag-row { color: #dc2626; font-size: 11px; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; display: block; }
+        .row-content-box h4 { font-size: 24px; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; }
+        .row-content-box p { color: #a1a1aa; font-size: 14px; line-height: 1.6; margin-bottom: 25px; }
+        .btn-row { text-decoration: none; color: #ffffff; background-color: #18181b; border: 1px solid #27272a; padding: 12px 25px; border-radius: 8px; font-weight: 700; text-transform: uppercase; font-size: 13px; }
+        .limited-banner { background-color: #09090b; border: 1px solid #18181b; padding: 50px 5%; border-radius: 20px; margin: 40px 20px; text-align: center; }
+        .limited-content h4 { font-size: 28px; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; }
+        .limited-content p { color: #a1a1aa; font-size: 14px; line-height: 1.6; margin-bottom: 25px; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .testimonial-card { background-color: #09090b; border: 1px solid #18181b; padding: 30px; border-radius: 16px; }
+        .stars { color: #f59e0b; font-size: 13px; margin-bottom: 12px; }
+        .testimonial-card p { color: #d4d4d8; font-size: 14px; line-height: 1.6; font-style: italic; margin-bottom: 20px; }
+        .user-info { display: flex; align-items: center; gap: 12px; }
+        .user-avatar { width: 35px; height: 35px; background-color: #dc2626; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; color: #fff; font-size: 13px; }
+        .footer { background-color: #020202; border-top: 1px solid #18181b; padding: 50px 5% 35px 5%; text-align: center; color: #52525b; font-size: 13px; }
+        @media(min-width: 768px) { .row-showcase { flex-direction: row; height: 260px; } .row-img-box { width: 40%; height: 100%; } .row-content-box { width: 60%; } }
     </style>
 </head>
 <body>
-
-    <!-- Navbar -->
+    <div class="top-bar">🔥 PROMOÇÃO DE LANÇAMENTO: FRETE GRÁTIS NAS COMPRAS ACIMA DE R$ 150!</div>
     <nav class="navbar">
-        <h1 class="logo">Viesczy<span>Store</span></h1>
-        <a href="https://instagram.com" target="_blank" class="nav-icon">
-            <i class="fab fa-instagram"></i>
-        </a>
+        <a href="#" class="logo">Viesczy<span>Store</span></a>
+        <a href="https://instagram.com" target="_blank" class="nav-icon"><i class="fab fa-instagram"></i></a>
     </nav>
-
-    <!-- Hero Section -->
     <header class="hero">
-        <span class="badge">Envio para todo o Brasil</span>
-        <h2>Seu Universo <span>Fanmade</span></h2>
-        <p>Os melhores produtos personalizados de K-pop, Anime, Punk e Rock reunidos em um só lugar. De photocards raros a roupas exclusivas criadas de fã para fã.</p>
-        <a href="https://instagram.com" target="_blank" class="btn-main">
-            <i class="fab fa-instagram" style="margin-right: 8px;"></i>Ver no Instagram
-        </a>
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <span class="badge"><i class="fas fa-bolt"></i> Estilo Alternativo Autêntico</span>
+            <h2>Seu Fandom.<br>Sua <span>Identidade.</span></h2>
+            <p>Os fanmades e colecionáveis premium mais brutas do mercado internacional. Estruturamos coleções sob medida de K-Pop, Anime, Punk e Rock criadas de fãs para fãs reais.</p>
+            <a href="https://instagram.com" target="_blank" class="btn-main"><i class="fas fa-shopping-bag" style="margin-right: 10px;"></i>Explorar Catálogo</a>
+        </div>
     </header>
-
-    <!-- Categorias -->
-    <section class="container">
-        <h3 class="section-title">Nossos Universos de Produtos</h3>
-        <div class="grid">
-            
-            <!-- K-Pop Card -->
-            <div class="card">
-                <div>
-                    <div class="card-img-area">
-                        <i class="fas fa-compact-disc"></i>
-                    </div>
-                    <div class="card-info">
-                        <h4>K-Pop</h4>
-                        <p>Entre no ritmo com nossos produtos exclusivos de K-Pop! Photocards personalizados de alta definição, polaroids memoráveis, mimos e roupas customizadas inspiradas nos seus grupos favoritos.</p>
-                    </div>
-                </div>
-                <div class="card-action">
-                    <a href="https://instagram.com" target="_blank" class="btn-card">Explorar Coleção</a>
-                </div>
+    <section class="features-bar">
+        <div class="feature-item"><i class="fas fa-truck-fast"></i><h5>Envio Rápido</h5><p>Rastreamento completo para todo o Brasil.</p></div>
+        <div class="feature-item"><i class="fas fa-shield-halved"></i><h5>Compra Segura</h5><p>Garantia total de recebimento.</p></div>
+        <div class="feature-item"><i class="fas fa-gem"></i><h5>Qualidade Premium</h5><p>Materiais selecionados de alta fidelidade.</p></div>
+    </section><main class="section-container">
+        <div class="section-header">
+            <h3>Nossos <span>Universos</span> de Produtos</h3>
+            <p>Selecione sua coleção e confira as peças exclusivas em estoque limitado.</p>
+        </div>
+        <div class="row-showcase">
+            <div class="row-img-box"><img src="https://unsplash.com" alt="K-Pop"></div>
+            <div class="row-content-box">
+                <span class="tag-row">Coleção Oficial Fanmade</span>
+                <h4>Universo K-Pop</h4>
+                <p>Photocards personalizados de alta definição, polaroids memoráveis, mimos e roupas customizadas inspiradas no estilo streetwear coreano.</p>
+                <a href="https://instagram.com" target="_blank" class="btn-row">Ver Catálogo</a>
             </div>
-
-            <!-- Punk/Rock Card -->
-            <div class="card">
-                <div>
-                    <div class="card-img-area">
-                        <i class="fas fa-guitar"></i>
-                    </div>
-                    <div class="card-info">
-                        <h4>Punk &amp; Rock</h4>
-                        <p>Liberte seu espírito underground! Jaquetas e roupas personalizadas com a estética pesada, rebelde e autêntica do rock clássico ao punk alternativo. Atitude sem concessões em cada detalhe.</p>
-                    </div>
-                </div>
-                <div class="card-action">
-                    <a href="https://instagram.com" target="_blank" class="btn-card">Explorar Coleção</a>
-                </div>
+        </div>
+        <div class="row-showcase">
+            <div class="row-img-box"><img src="https://unsplash.com" alt="Rock"></div>
+            <div class="row-content-box">
+                <span class="tag-row">Estilo Alternativo Bruto</span>
+                <h4>Punk &amp; Rock Attitude</h4>
+                <p>Nossa linha de roupas personalizadas traz a essência clássica do rock de garagem e o minimalismo agressivo do punk de rua.</p>
+                <a href="https://instagram.com" target="_blank" class="btn-row">Ver Linha Rock</a>
             </div>
-
-            <!-- Anime Card -->
-            <div class="card">
-                <div>
-                    <div class="card-img-area">
-                        <i class="fas fa-mask"></i>
-                    </div>
-                    <div class="card-info">
-                        <h4>Animes</h4>
-                        <p>Direto das telas para o seu visual cotidiano. Estampas e roupas customizadas, mangás, figurinhas e itens colecionáveis selecionados das maiores obras e personagens da cultura pop japonesa.</p>
-                    </div>
-                </div>
-                <div class="card-action">
-                    <a href="https://instagram.com" target="_blank" class="btn-card">Explorar Coleção</a>
-                </div>
+        </div>
+        <div class="row-showcase">
+            <div class="row-img-box"><img src="https://unsplash.com" alt="Anime"></div>
+            <div class="row-content-box">
+                <span class="tag-row">Cultura Pop Japonesa</span>
+                <h4>Mundo dos Animes</h4>
+                <p>Desenvolvemos moletons customizados com caimento oversize e estampas vetorizadas das maiores obras e personagens da cultura pop japonesa.</p>
+                <a href="https://instagram.com" target="_blank" class="btn-row">Ver Itens Anime</a>
             </div>
-
+        </div>
+    </main><section class="limited-banner">
+        <div class="limited-content">
+            <span class="tag-row">Edição Especial</span>
+            <h4>Combo Collector Box</h4>
+            <p>Garanta nosso kit misterioso contendo mais de 30 itens variados entre photocards holográficos e um moletom pesado exclusivo do seu nicho.</p>
+            <a href="https://instagram.com" target="_blank" class="btn-main" style="padding: 14px 30px; font-size: 14px;">Reservar Meu Combo</a>
         </div>
     </section>
-
-    <!-- Footer -->
+    <section class="section-container">
+        <div class="section-header"><h3>Quem <span>Compra</span>, Aprova</h3></div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Os photocards de K-pop chegaram muito rápidos e a qualidade da impressão é bizarra de perfeita, brilha muito!"</p>
+                <div class="user-info"><div class="user-avatar">MA</div><h6>Mariana Alves</h6></div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"O moletom oversize de anime tem um tecido muito grosso e confortável. A estampa não desbota de jeito nenhum."</p>
+                <div class="user-info"><div class="user-avatar">TC</div><h6>Thiago Costa</h6></div>
+            </div>
+        </div>
+    </section>
     <footer class="footer">
-        <p>&copy; 2026 Viesczy Store. Todos os direitos reservados.</p>
-        <p style="margin-top: 5px; color: #3f3f46;">Desenvolvido de forma autônoma pelo Ecossistema Senku Core B2B Omnichannel.</p>
+        <p>&copy; 2026 Viesczy Store. Todos os direitos reservados. Escalado via Senku Core System.</p>
     </footer>
-
 </body>
 </html>
