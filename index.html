@@ -4,83 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viesczy Store | Loja de Fanmades</title>
-    <script src="https://tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cloudflare.com">
+    
+    <style>
+        /* CORE DESIGN INTERNO - BLINDAGEM GITHUB PAGES */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #000000; color: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; -webkit-font-smoothing: antialiased; }
+        
+        /* Navbar */
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background-color: #09090b; border-bottom: 1px solid #1f1f23; position: sticky; top: 0; z-index: 50; }
+        .logo { font-size: 24px; font-weight: 900; color: #dc2626; text-transform: uppercase; letter-spacing: 2px; }
+        .logo span { color: #ffffff; }
+        .nav-icon { color: #a1a1aa; font-size: 24px; text-decoration: none; transition: 0.3s; }
+        .nav-icon:hover { color: #ef4444; }
+
+        /* Hero section */
+        .hero { text-align: center; padding: 100px 20px; background-color: #020202; position: relative; border-bottom: 1px solid #0f0f11; }
+        .badge { color: #ef4444; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; background-color: #450a0a; border: 1px solid #7f1d1d; padding: 6px 18px; border-radius: 50px; display: inline-block; margin-bottom: 25px; }
+        .hero h2 { font-size: 52px; font-weight: 900; text-transform: uppercase; margin-bottom: 20px; letter-spacing: -1px; }
+        .hero h2 span { color: #dc2626; }
+        .hero p { color: #a1a1aa; font-size: 18px; max-width: 650px; margin: 0 auto 40px auto; line-height: 1.6; }
+        .btn-main { background-color: #dc2626; color: #ffffff; font-weight: 900; text-decoration: none; padding: 16px 40px; border-radius: 12px; font-size: 16px; text-transform: uppercase; display: inline-block; transition: 0.3s; box-shadow: 0 10px 25px rgba(220,38,38,0.25); tracking-spacing: 1px; }
+        .btn-main:hover { background-color: #b91c1c; transform: translateY(-2px); }
+
+        /* Container de Cards */
+        .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
+        .section-title { text-align: center; font-size: 32px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 50px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
+        .card { background-color: #09090b; border: 1px solid #18181b; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .card:hover { border-color: #dc2626; transform: translateY(-4px); }
+        .card-img-area { background-color: #121214; height: 200px; display: flex; align-items: center; justify-content: center; font-size: 55px; color: #dc2626; border-bottom: 1px solid #18181b; }
+        .card-info { padding: 30px; }
+        .card-info h4 { font-size: 24px; font-weight: 900; color: #ef4444; text-transform: uppercase; margin-bottom: 12px; letter-spacing: -0.5px; }
+        .card-info p { color: #a1a1aa; font-size: 14px; line-height: 1.6; }
+        .card-action { padding: 0 30px 30px 30px; }
+        .btn-card { display: block; text-align: center; background-color: #121214; color: #ffffff; text-decoration: none; font-weight: bold; padding: 14px; border-radius: 12px; border: 1px solid #27272a; transition: 0.3s; }
+        .btn-card:hover { background-color: #dc2626; border-color: #dc2626; color: #ffffff; }
+
+        /* Footer */
+        .footer { border-top: 1px solid #18181b; background-color: #09090b; padding: 40px; text-align: center; color: #52525b; font-size: 12px; line-height: 1.5; }
+    </style>
 </head>
-<body class="bg-black text-white font-sans selection:bg-red-600 selection:text-white">
+<body>
 
     <!-- Navbar -->
-    <nav class="border-b border-zinc-800 bg-zinc-950/80 backdrop-blur sticky top-0 z-50 p-4">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-black text-red-600 tracking-wider uppercase">Viesczy<span class="text-white">Store</span></h1>
-            <a href="https://instagram.com" target="_blank" class="text-zinc-400 hover:text-red-500 transition text-2xl">
-                <i class="fab fa-instagram"></i>
-            </a>
-        </div>
+    <nav class="navbar">
+        <h1 class="logo">Viesczy<span>Store</span></h1>
+        <a href="https://instagram.com" target="_blank" class="nav-icon">
+            <i class="fab fa-instagram"></i>
+        </a>
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative py-28 px-4 text-center bg-zinc-950 border-b border-zinc-900 overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.1)_0%,transparent_70%)]"></div>
-        <div class="max-w-3xl mx-auto relative z-10">
-            <span class="text-red-500 text-sm font-black tracking-widest uppercase bg-red-950/50 border border-red-900 px-4 py-1.5 rounded-full">Envio para todo o Brasil</span>
-            <h2 class="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tight mt-6">Seu Universo <span class="text-red-600">Fanmade</span></h2>
-            <p class="text-zinc-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto">Os melhores produtos personalizados de K-pop, Anime, Punk e Rock reunidos em um só lugar. De photocards raros a roupas exclusivas.</p>
-            <a href="https://instagram.com" target="_blank" class="bg-red-600 hover:bg-red-700 text-white font-black py-4 px-10 rounded-xl text-lg tracking-wide transition inline-block shadow-xl shadow-red-600/20">
-                <i class="fab fa-instagram mr-2"></i>Ver no Instagram
-            </a>
-        </div>
+    <header class="hero">
+        <span class="badge">Envio para todo o Brasil</span>
+        <h2>Seu Universo <span>Fanmade</span></h2>
+        <p>Os melhores produtos personalizados de K-pop, Anime, Punk e Rock reunidos em um só lugar. De photocards raros a roupas exclusivas criadas de fã para fã.</p>
+        <a href="https://instagram.com" target="_blank" class="btn-main">
+            <i class="fab fa-instagram" style="margin-right: 8px;"></i>Ver no Instagram
+        </a>
     </header>
 
-    <!-- Seção de Categorias -->
-    <section class="max-w-6xl mx-auto py-20 px-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- Categorias -->
+    <section class="container">
+        <h3 class="section-title">Nossos Universos de Produtos</h3>
+        <div class="grid">
             
             <!-- K-Pop Card -->
-            <div class="bg-zinc-950 border border-zinc-900 rounded-2xl overflow-hidden hover:border-red-600/50 transition duration-300 flex flex-col justify-between shadow-2xl group">
+            <div class="card">
                 <div>
-                    <div class="h-64 overflow-hidden relative bg-zinc-900 border-b border-zinc-900">
-                        <img src="https://unsplash.com" alt="K-Pop" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="card-img-area">
+                        <i class="fas fa-compact-disc"></i>
                     </div>
-                    <div class="p-6">
-                        <h4 class="text-2xl font-black mb-3 text-red-500 uppercase tracking-tight">K-Pop</h4>
-                        <p class="text-zinc-400 text-sm leading-relaxed">Entre no ritmo com nossos produtos exclusivos de K-Pop! Photocards personalizados de alta definição, polaroids memoráveis, mimos e roupas customizadas.</p>
+                    <div class="card-info">
+                        <h4>K-Pop</h4>
+                        <p>Entre no ritmo com nossos produtos exclusivos de K-Pop! Photocards personalizados de alta definição, polaroids memoráveis, mimos e roupas customizadas inspiradas nos seus grupos favoritos.</p>
                     </div>
                 </div>
-                <div class="p-6 pt-0">
-                    <a href="https://instagram.com" target="_blank" class="block text-center bg-zinc-900 hover:bg-red-600 border border-zinc-800 text-white font-bold py-3 rounded-xl transition">Explorar Coleção</a>
+                <div class="card-action">
+                    <a href="https://instagram.com" target="_blank" class="btn-card">Explorar Coleção</a>
                 </div>
             </div>
 
             <!-- Punk/Rock Card -->
-            <div class="bg-zinc-950 border border-zinc-900 rounded-2xl overflow-hidden hover:border-red-600/50 transition duration-300 flex flex-col justify-between shadow-2xl group">
+            <div class="card">
                 <div>
-                    <div class="h-64 overflow-hidden relative bg-zinc-900 border-b border-zinc-900">
-                        <img src="https://unsplash.com" alt="Punk Rock" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="card-img-area">
+                        <i class="fas fa-guitar"></i>
                     </div>
-                    <div class="p-6">
-                        <h4 class="text-2xl font-black mb-3 text-red-500 uppercase tracking-tight">Punk &amp; Rock</h4>
-                        <p class="text-zinc-400 text-sm leading-relaxed">Liberte seu espírito underground! Jaquetas e roupas personalizadas com a estética pesada, rebelde e autêntica do rock clássico ao punk alternativo.</p>
+                    <div class="card-info">
+                        <h4>Punk &amp; Rock</h4>
+                        <p>Liberte seu espírito underground! Jaquetas e roupas personalizadas com a estética pesada, rebelde e autêntica do rock clássico ao punk alternativo. Atitude sem concessões em cada detalhe.</p>
                     </div>
                 </div>
-                <div class="p-6 pt-0">
-                    <a href="https://instagram.com" target="_blank" class="block text-center bg-zinc-900 hover:bg-red-600 border border-zinc-800 text-white font-bold py-3 rounded-xl transition">Explorar Coleção</a>
+                <div class="card-action">
+                    <a href="https://instagram.com" target="_blank" class="btn-card">Explorar Coleção</a>
                 </div>
             </div>
 
             <!-- Anime Card -->
-            <div class="bg-zinc-950 border border-zinc-900 rounded-2xl overflow-hidden hover:border-red-600/50 transition duration-300 flex flex-col justify-between shadow-2xl group">
+            <div class="card">
                 <div>
-                    <div class="h-64 overflow-hidden relative bg-zinc-900 border-b border-zinc-900">
-                        <img src="https://unsplash.com" alt="Anime" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="card-img-area">
+                        <i class="fas fa-mask"></i>
                     </div>
-                    <div class="p-6">
-                        <h4 class="text-2xl font-black mb-3 text-red-500 uppercase tracking-tight">Animes</h4>
-                        <p class="text-zinc-400 text-sm leading-relaxed">Direto das telas para o seu visual cotidiano. Estampas e roupas customizadas, mangás, figurinhas e itens colecionáveis selecionados das maiores obras.</p>
+                    <div class="card-info">
+                        <h4>Animes</h4>
+                        <p>Direto das telas para o seu visual cotidiano. Estampas e roupas customizadas, mangás, figurinhas e itens colecionáveis selecionados das maiores obras e personagens da cultura pop japonesa.</p>
                     </div>
                 </div>
-                <div class="p-6 pt-0">
-                    <a href="https://instagram.com" target="_blank" class="block text-center bg-zinc-900 hover:bg-red-600 border border-zinc-800 text-white font-bold py-3 rounded-xl transition">Explorar Coleção</a>
+                <div class="card-action">
+                    <a href="https://instagram.com" target="_blank" class="btn-card">Explorar Coleção</a>
                 </div>
             </div>
 
@@ -88,8 +122,10 @@
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-zinc-900 bg-zinc-950 py-10 text-center text-zinc-600 text-xs">
+    <footer class="footer">
         <p>&copy; 2026 Viesczy Store. Todos os direitos reservados.</p>
+        <p style="margin-top: 5px; color: #3f3f46;">Desenvolvido de forma autônoma pelo Ecossistema Senku Core B2B Omnichannel.</p>
     </footer>
+
 </body>
 </html>
