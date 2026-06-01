@@ -3,68 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viesczy Store | Painel B2B Premium</title>
-    <script src="https://tailwindcss.com"></script>
+    <title>Viesczy Store | Premium Fanmade</title>
     <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #240000; color: #ffffff; font-family: 'Segoe UI', system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        .top-bar { background-color: #c10000; color: #fff; text-align: center; padding: 10px; font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 25px 5%; background-color: #09090b; border-bottom: 1px solid #1f1f23; position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 26px; font-weight: 900; color: #c10000; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; }
+        .logo span { color: #ffffff; }
+        .hero { position: relative; padding: 140px 5%; text-align: left; display: flex; align-items: center; min-height: 70vh; background-color: #000; border-bottom: 1px solid #18181b; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(to right, #000 40%, rgba(0,0,0,0.6) 100%), url('https://imgur.com'); background-size: cover; background-position: center; opacity: 0.5; z-index: 1; }
+        .hero-content { max-width: 650px; z-index: 10; position: relative; }
+        .badge { color: #ffffff; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; background-color: #c10000; padding: 8px 20px; border-radius: 50px; display: inline-block; margin-bottom: 25px; }
+        .hero h2 { font-size: 52px; font-weight: 900; text-transform: uppercase; margin-bottom: 25px; line-height: 1.1; }
+        .hero h2 span { color: #c10000; }
+        .hero p { color: #d4d4d8; font-size: 18px; margin-bottom: 40px; line-height: 1.6; }
+        .btn-main { background-color: #c10000; color: #ffffff; font-weight: 900; text-decoration: none; padding: 16px 40px; border-radius: 10px; text-transform: uppercase; display: inline-block; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .features-bar { background-color: #09090b; border-bottom: 1px solid #18181b; padding: 40px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; text-align: center; }
+        .feature-item i { color: #c10000; font-size: 32px; margin-bottom: 15px; }
+        .feature-item h5 { font-size: 16px; font-weight: 900; text-transform: uppercase; margin-bottom: 5px; }
+        .feature-item p { color: #71717a; font-size: 13px; }
+        .section-container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h3 { font-size: 36px; font-weight: 900; text-transform: uppercase; }
+        .section-header h3 span { color: #c10000; }
+        .row-showcase { display: flex; flex-direction: column; background-color: #09090b; border: 1px solid #18181b; border-radius: 20px; overflow: hidden; margin-bottom: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .row-showcase:hover { border-color: #c10000; }
+        .row-img-box { width: 100%; height: 260px; overflow: hidden; }
+        .row-img-box img { width: 100%; height: 100%; object-fit: cover; }
+        .row-content-box { padding: 35px; }
+        .tag-row { color: #c10000; font-size: 11px; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; display: block; }
+        .row-content-box h4 { font-size: 24px; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; }
+        .row-content-box p { color: #a1a1aa; font-size: 14px; line-height: 1.6; margin-bottom: 25px; }
+        .btn-row { text-decoration: none; color: #ffffff; background-color: #18181b; border: 1px solid #27272a; padding: 12px 25px; border-radius: 8px; font-weight: 700; text-transform: uppercase; font-size: 13px; transition: 0.3s; }
+        .btn-row:hover { background-color: #c10000; border-color: #c10000; }
+        .limited-banner { background-color: #09090b; border: 1px solid #18181b; padding: 60px 5%; border-radius: 24px; margin: 40px 20px; text-align: center; }
+        .limited-content h4 { font-size: 30px; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; }
+        .limited-content p { color: #a1a1aa; font-size: 15px; line-height: 1.6; margin-bottom: 25px; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .testimonial-card { background-color: #09090b; border: 1px solid #18181b; padding: 35px; border-radius: 20px; }
+        .stars { color: #f59e0b; font-size: 14px; margin-bottom: 15px; }
+        .testimonial-card p { color: #d4d4d8; font-size: 14px; line-height: 1.6; font-style: italic; margin-bottom: 20px; }
+        .user-info { display: flex; align-items: center; gap: 15px; }
+        .user-avatar { width: 40px; height: 40px; background-color: #c10000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; color: #fff; }
+        .footer { background-color: #020202; border-top: 1px solid #18181b; padding: 60px 5% 40px 5%; text-align: center; color: #52525b; font-size: 13px; }
+        @media(min-width: 768px) { .row-showcase { flex-direction: row; height: 280px; } .row-img-box { width: 40%; height: 100%; } .row-content-box { width: 60%; } }
+    </style>
 </head>
-<body class="bg-black text-white font-sans selection:bg-red-600 selection:text-white">
-    <nav class="border-b border-zinc-800 bg-zinc-950 p-4">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-black text-red-600 tracking-wider uppercase">Viesczy<span>Store</span></h1>
-            <span class="text-xs text-zinc-500 font-mono">Modo Edição Inteligente Ativo</span>
-        </div>
+<body>
+    <div class="top-bar">🔥 PROMOÇÃO DE LANÇAMENTO: FRETE GRÁTIS PARA TODO O BRASIL NAS COMPRAS ACIMA DE R$ 150!</div>
+    <nav class="navbar">
+        <a href="#" class="logo">Viesczy Store</a>
+        <a href="https://instagram.com" target="_blank" class="nav-icon"><i class="fab fa-instagram"></i></a>
     </nav>
-    <header id="hero-section" class="relative py-24 px-4 text-center bg-zinc-950 border-b border-zinc-900 overflow-hidden bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.85), #000000), url('hero.jpg');">
-        <div class="max-w-3xl mx-auto relative z-10">
-            <span class="text-red-500 text-sm font-black tracking-widest uppercase bg-red-950/50 border border-red-900 px-4 py-1.5 rounded-full">Envio para todo o Brasil</span>
-            <h2 class="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tight mt-6">Seu Universo <span class="text-red-600">Fanmade</span></h2>
-            <p class="text-zinc-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto">Os melhores produtos personalizados de K-pop, Anime, Punk e Rock reunidos em um só lugar.</p>
-            <div class="border-2 border-dashed border-zinc-700 hover:border-red-600 rounded-xl p-4 bg-zinc-900/50 max-w-sm mx-auto cursor-pointer transition text-xs text-zinc-400" ondragover="event.preventDefault()" ondrop="trocarImagemBanner(event, 'hero-section')">
-                <i class="fas fa-cloud-arrow-up text-lg mb-1 block text-red-500"></i> Arraste aqui a foto do Banner Principal
-            </div>
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <span class="badge"><i class="fas fa-bolt"></i> Estilo Alternativo Autêntico</span>
+            <h2>Seu Fandom.<br>Sua <span>Identidade.</span></h2>
+            <p>Os melhores produtos personalizados de K-pop, Anime, Punk e Rock reunidos em um so lugar.</p>
+            <a href="https://instagram.com" target="_blank" class="btn-main"><i class="fas fa-shopping-bag" style="margin-right: 10px;"></i>Explorar Catálogo Real</a>
         </div>
     </header>
-    <section class="max-w-6xl mx-auto py-16 px-4">
-        <h3 class="text-3xl font-black text-center mb-12 uppercase tracking-wide">Nossos Universos de Produtos</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-zinc-950 border border-zinc-900 rounded-2xl overflow-hidden hover:border-red-600/50 transition duration-300 flex flex-col justify-between shadow-2xl">
-                <div>
-                    <div class="h-48 overflow-hidden relative bg-zinc-900 border-b border-zinc-900 flex items-center justify-center p-2">
-                        <img id="img-kpop" src="kpop.jpg" alt="K-Pop" class="w-full h-full object-cover rounded-lg">
-                    </div>
-                    <div class="p-4 border-b border-zinc-900">
-                        <div class="border border-dashed border-zinc-800 p-2 rounded text-center text-zinc-500 text-xs cursor-pointer" ondragover="event.preventDefault()" ondrop="trocarImagemCard(event, 'img-kpop')">Arraste a foto de K-Pop aqui</div>
-                    </div>
-                    <div class="p-6"><h4 class="text-2xl font-black mb-2 text-red-500 uppercase">K-Pop</h4><p class="text-zinc-400 text-sm">Photocards personalizados de alta definição e polaroids.</p></div>
-                </div>
+    <section class="features-bar">
+        <div class="feature-item"><i class="fas fa-truck-fast"></i><h5>Envio Rápido</h5><p>Rastreamento completo para todo o Brasil.</p></div>
+        <div class="feature-item"><i class="fas fa-shield-halved"></i><h5>Compra Segura</h5><p>Garantia total de recebimento e satisfação.</p></div>
+        <div class="feature-item"><i class="fas fa-gem"></i><h5>Qualidade Premium</h5><p>Materiais selecionados de alta fidelidade.</p></div>
+    </section>
+    <main class="section-container">
+        <div class="section-header">
+            <h3>Nossos <span>Universos</span> de Produtos</h3>
+            <p>Selecione sua coleção e confira as peças exclusivas em estoque limitado.</p>
+        </div>
+        <div class="row-showcase">
+            <div class="row-img-box"><img src="https://imgur.com" alt="K-Pop"></div>
+            <div class="row-content-box">
+                <span class="tag-row">Coleção Oficial Fanmade</span>
+                <h4>Universo K-Pop</h4>
+                <p>Photocards personalizados de alta definição, polaroids memoráveis, mimos e roupas customizadas inspiradas no estilo streetwear coreano.</p>
+                <a href="https://instagram.com" target="_blank" class="btn-row">Ver Catálogo</a>
             </div>
-            <div class="bg-zinc-950 border border-zinc-900 rounded-2xl overflow-hidden hover:border-red-600/50 transition duration-300 flex flex-col justify-between shadow-2xl">
-                <div>
-                    <div class="h-48 overflow-hidden relative bg-zinc-900 border-b border-zinc-900 flex items-center justify-center p-2">
-                        <img id="img-rock" src="rock.jpg" alt="Punk Rock" class="w-full h-full object-cover rounded-lg">
-                    </div>
-                    <div class="p-4 border-b border-zinc-900">
-                        <div class="border border-dashed border-zinc-800 p-2 rounded text-center text-zinc-500 text-xs cursor-pointer" ondragover="event.preventDefault()" ondrop="trocarImagemCard(event, 'img-rock')">Arraste a foto de Rock aqui</div>
-                    </div>
-                    <div class="p-6"><h4 class="text-2xl font-black mb-2 text-red-500 uppercase">Punk &amp; Rock</h4><p class="text-zinc-400 text-sm">Jaquetas e roupas personalizadas com a estética pesada e rebelde.</p></div>
-                </div>
+        </div>
+        <div class="row-showcase">
+            <div class="row-img-box"><img src="https://imgur.com" alt="Rock"></div>
+            <div class="row-content-box">
+                <span class="tag-row">Estilo Alternativo Bruto</span>
+                <h4>Punk &amp; Rock Attitude</h4>
+                <p>Nossa linha de roupas personalizadas traz a essência clássica do rock de garagem e o minimalismo agressivo do punk de rua.</p>
+                <a href="https://instagram.com" target="_blank" class="btn-row">Ver Linha Rock</a>
             </div>
-            <div class="bg-zinc-950 border border-zinc-900 rounded-2xl overflow-hidden hover:border-red-600/50 transition duration-300 flex flex-col justify-between shadow-2xl">
-                <div>
-                    <div class="h-48 overflow-hidden relative bg-zinc-900 border-b border-zinc-900 flex items-center justify-center p-2">
-                        <img id="img-anime" src="anime.jpg" alt="Anime" class="w-full h-full object-cover rounded-lg">
-                    </div>
-                    <div class="p-4 border-b border-zinc-900">
-                        <div class="border border-dashed border-zinc-800 p-2 rounded text-center text-zinc-500 text-xs cursor-pointer" ondragover="event.preventDefault()" ondrop="trocarImagemCard(event, 'img-anime')">Arraste a foto de Anime aqui</div>
-                    </div>
-                    <div class="p-6"><h4 class="text-2xl font-black mb-2 text-red-500 uppercase">Animes</h4><p class="text-zinc-400 text-sm">Estampas, roupas customizadas e itens colecionáveis selecionados.</p></div>
-                </div>
+        </div>
+        <div class="row-showcase">
+            <div class="row-img-box"><img src="https://imgur.com" alt="Anime"></div>
+            <div class="row-content-box">
+                <span class="tag-row">Cultura Pop Japonesa</span>
+                <h4>Mundo dos Animes</h4>
+                <p>Desenvolvemos moletons customizados com caimento oversize e estampas vetorizadas das maiores obras e personagens da cultura pop japonesa.</p>
+                <a href="https://instagram.com" target="_blank" class="btn-row">Ver Itens Anime</a>
+            </div>
+        </div>
+    </main>
+    <section class="limited-banner">
+        <div class="limited-content">
+            <span class="tag-row">Edição Especial</span>
+            <h4>Combo Collector Box</h4>
+            <p>Garanta nosso kit misterioso contendo mais de 30 itens variados entre photocards holográficos e um moletom pesado exclusivo do seu nicho.</p>
+            <a href="https://instagram.com" target="_blank" class="btn-main" style="padding: 14px 30px; font-size: 14px;">Reservar Meu Combo</a>
+        </div>
+    </section>
+    <section class="section-container">
+        <div class="section-header"><h3>Quem <span>Compra</span>, Aprova</h3></div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Os photocards de K-pop chegaram muito rápidos e a qualidade da impressão é bizarra de perfeita, brilha muito!"</p>
+                <div class="user-info"><div class="user-avatar">MA</div><h6>Mariana Alves</h6></div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"O moletom oversize de anime tem um tecido muito grosso e confortável. A estampa não desbota de jeito nenhum."</p>
+                <div class="user-info"><div class="user-avatar">TC</div><h6>Thiago Costa</h6></div>
             </div>
         </div>
     </section>
-    <script>
-        function trocarImagemCard(e, targetId) { e.preventDefault(); const file = e.dataTransfer.files[0]; if (file && file.type.startsWith('image/')) { const reader = new FileReader(); reader.onload = function(event) { document.getElementById(targetId).src = event.target.result; }; reader.readAsDataURL(file); } }
-        function trocarImagemBanner(e, targetId) { e.preventDefault(); const file = e.dataTransfer.files[0]; if (file && file.type.startsWith('image/')) { const reader = new FileReader(); reader.onload = function(event) { document.getElementById(targetId).style.backgroundImage = `linear-gradient(to bottom, rgba(0,0,0,0.85), #000000), url('${event.target.result}')`; }; reader.readAsDataURL(file); } }
-    </script>
+    <footer class="footer">
+        <p>&copy; 2026 Viesczy Store. Todos os direitos reservados. Escalado via Senku Core B2B.</p>
+    </footer>
 </body>
 </html>
