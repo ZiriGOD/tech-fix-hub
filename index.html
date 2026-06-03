@@ -3,109 +3,511 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIESCZY STORE | Universos de Produtos</title>
+    <title>Senku Ecosystem - Consultoria Estratégica B2B Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
-        body { background-color: #0a0a0a; color: #ffffff; padding: 40px 20px; text-align: center; }
-        h1 { color: #ffffff; font-size: 2rem; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
-        h1 span { color: #ff003c; }
-        .subtitle { color: #b3b3b3; font-size: 1rem; margin-bottom: 50px; }
-        .grid-container { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px; }
-        .card-combo { background: #0f0f0f; border: 1px solid #1a1a1a; border-radius: 12px; padding: 30px; display: flex; gap: 40px; text-align: left; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.7); }
-        .box-foto { width: 450px; height: 280px; background: #050505; border: 1px solid #222; border-radius: 8px; display: flex; justify-content: center; align-items: center; overflow: hidden; flex-shrink: 0; }
-        .box-foto svg { width: 100%; height: 100%; display: block; }
-        .box-info { flex: 1; }
-        .tag-sub { color: #ff003c; font-size: 0.75rem; font-weight: bold; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 15px; display: block; }
-        .card-title { font-size: 1.6rem; font-weight: 900; letter-spacing: 1px; margin-bottom: 15px; text-transform: uppercase; }
-        .card-text { color: #8e8e8e; font-size: 0.95rem; line-height: 1.6; margin-bottom: 30px; }
-        .btn-catalogo { background: #1a1a1a; color: #ffffff; border: 1px solid #333; text-decoration: none; padding: 12px 28px; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; display: inline-block; transition: all 0.3s; }
-        .btn-catalogo:hover { background: #ff003c; border-color: #ff003c; }
+        /* Variáveis CSS para Cores e Fontes */
+        :root {
+            --bg-deep-carbon: #06060a;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --neon-blue: #00eaff; /* Azul Ciano */
+            --neon-green: #00ff8c; /* Verde Esmeralda */
+            --glass-bg: rgba(255, 255, 255, 0.08); /* Fundo translúcido para glassmorphism */
+            --glass-border: rgba(255, 255, 255, 0.15); /* Borda mais definida */
+            --form-input-bg: rgba(255, 255, 255, 0.05);
+            --form-input-border: rgba(255, 255, 255, 0.1);
+            --button-bg: linear-gradient(90deg, var(--neon-blue), var(--neon-green));
+            --font-primary: 'Montserrat', sans-serif;
+            --font-secondary: 'Inter', sans-serif;
+            --shadow-intensity: 0 0 15px rgba(0, 255, 255, 0.4), 0 0 30px rgba(0, 255, 140, 0.2);
+            --glow-1: 0 0 10px var(--neon-blue);
+            --glow-2: 0 0 20px var(--neon-green);
+            --glow-3: 0 0 40px var(--neon-blue);
+            --glow-4: 0 0 80px var(--neon-green);
+        }
+
+        /* Reset Básico */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-secondary);
+            background-color: var(--bg-deep-carbon);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Estilos Globais de Tipografia */
+        h1, h2, h3, h4 {
+            font-family: var(--font-primary);
+            font-weight: 800;
+            color: var(--text-primary);
+            text-shadow: var(--shadow-intensity); /* Sutil brilho nos títulos */
+        }
+
+        h1 { font-size: 3.8rem; line-height: 1.1; margin-bottom: 1.5rem; }
+        h2 { font-size: 2.8rem; line-height: 1.2; margin-bottom: 2rem; text-align: center; }
+        h3 { font-size: 1.8rem; line-height: 1.3; margin-bottom: 1rem; }
+        p { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 1rem; }
+
+        /* Estilo para elementos contenteditable */
+        [contenteditable="true"]:focus {
+            outline: 2px solid var(--neon-blue);
+            border-radius: 4px;
+            padding: 2px 4px;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Botões CTA */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.5rem;
+            background: var(--button-bg);
+            color: var(--bg-deep-carbon);
+            border: none;
+            border-radius: 8px;
+            font-family: var(--font-primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--glow-1), var(--glow-2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--glow-1), var(--glow-2), var(--glow-3), var(--glow-4);
+            filter: brightness(1.2);
+        }
+
+        /* Seção Hero */
+        .hero-section {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        /* Efeito de background de partícula sutil para hero (opcional, mas adiciona luxo) */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top left, rgba(0, 255, 140, 0.05) 0%, transparent 40%),
+                        radial-gradient(circle at bottom right, rgba(0, 234, 255, 0.05) 0%, transparent 40%);
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        /* Seções Gerais */
+        section {
+            padding: 8rem 0;
+        }
+
+        /* Card Base Glassmorphism com Neon Glow */
+        .glass-card {
+            background-color: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--glow-1); /* Sombra inicial */
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg at 50% 50%,
+                        transparent 0%,
+                        var(--neon-blue) 10%,
+                        transparent 20%,
+                        transparent 40%,
+                        var(--neon-green) 50%,
+                        transparent 60%,
+                        transparent 80%,
+                        var(--neon-blue) 90%,
+                        transparent 100%);
+            animation: rotateGlow 8s linear infinite;
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--glow-1), var(--glow-2), 0 0 60px rgba(0, 255, 140, 0.4);
+            border-color: var(--neon-blue);
+        }
+
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Seção de Serviços - Bento Grid Assimétrico */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Fallback */
+            grid-template-rows: auto;
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(6, 1fr);
+                grid-template-rows: repeat(2, 250px); /* Linhas de altura fixa para assimetria */
+                gap: 1.5rem;
+            }
+
+            .service-item:nth-child(1) { /* Otimização de Processos */
+                grid-column: span 3;
+                grid-row: span 1;
+            }
+            .service-item:nth-child(2) { /* Inteligência de Mercado */
+                grid-column: span 3;
+                grid-row: span 1;
+            }
+            .service-item:nth-child(3) { /* Transformação Digital */
+                grid-column: span 4;
+                grid-row: span 1;
+            }
+            .service-item:nth-child(4) { /* Estratégias de Crescimento */
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+        }
+
+        .service-item h3 {
+            color: var(--neon-green);
+            margin-bottom: 0.8rem;
+            font-size: 1.6rem;
+        }
+        .service-item p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Seção de Prova Social/Autoridade */
+        .social-proof {
+            text-align: center;
+            background-color: rgba(10, 10, 15, 0.4); /* Fundo ligeiramente diferente */
+            padding: 8rem 0;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .social-proof h2 {
+            margin-bottom: 4rem;
+            color: var(--neon-blue);
+        }
+
+        .logos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 3rem;
+            align-items: center;
+            justify-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-item {
+            width: 100%;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: grayscale(100%) brightness(0.7);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .logo-item:hover {
+            filter: grayscale(0%) brightness(1);
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .logo-item img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        /* Formulário de Conversão */
+        .conversion-form {
+            text-align: center;
+            padding-top: 8rem;
+            padding-bottom: 8rem; /* Aumentado para a seção de formulário ter mais espaço */
+        }
+        .conversion-form h2 {
+            margin-bottom: 3rem;
+            color: var(--neon-green);
+        }
+
+        .form-card {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 3.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background-color: var(--form-input-bg);
+            border: 1px solid var(--form-input-border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group textarea:focus {
+            border-color: var(--neon-blue);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 234, 255, 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit-btn {
+            width: 100%;
+            margin-top: 2rem;
+            padding: 1.2rem;
+            font-size: 1.2rem;
+        }
+
+        /* Footer (Adicionado para um design completo) */
+        .footer {
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 4rem;
+        }
+        .footer p {
+            margin-bottom: 0.5rem;
+        }
+        .footer a {
+            color: var(--neon-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer a:hover {
+            color: var(--neon-green);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2.2rem; }
+            h3 { font-size: 1.5rem; }
+            p { font-size: 1rem; }
+
+            .btn {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            section {
+                padding: 6rem 0;
+            }
+
+            .glass-card {
+                padding: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr; /* Volta a ser uma coluna para mobile */
+                grid-template-rows: auto;
+            }
+
+            .service-item:nth-child(1),
+            .service-item:nth-child(2),
+            .service-item:nth-child(3),
+            .service-item:nth-child(4) {
+                grid-column: span 1;
+                grid-row: auto;
+            }
+
+            .logos-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            h3 { font-size: 1.3rem; }
+
+            .hero-section {
+                padding: 4rem 0;
+            }
+            .hero-content {
+                max-width: 90%;
+            }
+        }
     </style>
 </head>
 <body>
-
-    <h1>NOSSOS <span>UNIVERSOS</span> DE PRODUTOS</h1>
-    <p class="subtitle">Selecione sua coleção e confira as peças exclusivas em estoque limitado.</p>
-
-    <div class="grid-container">
-        <!-- BLOCO 01: K-POP -->
-        <div class="card-combo">
-            <div class="box-foto">
-                <svg viewBox="0 0 450 280" xmlns="http://w3.org">
-                    <defs>
-                        <linearGradient id="gradKpop" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#0d0414;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#24031c;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#gradKpop)"/>
-                    <circle cx="225" cy="140" r="80" fill="none" stroke="#ff003c" stroke-width="1" stroke-opacity="0.2"/>
-                    <!-- Coração Estilizado Neon -->
-                    <path d="M225,155 C205,115 165,115 165,140 C165,170 225,210 225,210 C225,210 285,170 285,140 C285,115 245,115 225,155 Z" fill="none" stroke="#ff003c" stroke-width="3" style="filter: drop-shadow(0px 0px 6px #ff003c);"/>
-                    <text x="50%" y="45" font-family="sans-serif" font-size="11" fill="#ff003c" font-weight="bold" text-anchor="middle" letter-spacing="3">SEOUL EDITION</text>
-                </svg>
+    <main>
+        <!-- Bloco Principal de Impacto (Hero Area) -->
+        <section class="hero-section">
+            <div class="container hero-content">
+                <h1 contenteditable="true">Dispare Seu Próximo Salto Industrial com IA.</h1>
+                <p contenteditable="true">A Senku Ecosystem é sua parceira estratégica para desbloquear o potencial máximo de sua empresa, orquestrando soluções de IA que redefinem mercados e garantem a liderança em seu setor.</p>
+                <a href="#contato" class="btn">Agende Sua Consultoria Estratégica</a>
             </div>
-            <div class="box-info">
-                <span class="tag-sub">Coleção Oficial Fanmade</span>
-                <div class="card-title">Universo K-Pop</div>
-                <div class="card-text">Photocards personalizados de alta definição, polaroids memoráveis, mimos e roupas customizadas inspiradas no estilo streetwear coreano.</div>
-                <a href="#" class="btn-catalogo">Ver Catálogo</a>
+        </section>
+
+        <!-- Grade de Serviços (Bento Grid Assimétrico) -->
+        <section id="servicos" class="container">
+            <h2 contenteditable="true">Nossas Soluções de Ponta: O Futuro dos Negócios Agora.</h2>
+            <div class="services-grid">
+                <div class="glass-card service-item">
+                    <h3 contenteditable="true">Otimização de Processos com IA Genética</h3>
+                    <p contenteditable="true">Redesenhe e automatize fluxos de trabalho complexos com algoritmos de IA que aprendem e adaptam, eliminando gargalos e maximizando a eficiência operacional em escala industrial.</p>
+                </div>
+                <div class="glass-card service-item">
+                    <h3 contenteditable="true">Inteligência de Mercado Preditiva (V876)</h3>
+                    <p contenteditable="true">Antecipe tendências, identifique oportunidades e neutralize ameaças com nossa plataforma de IA V876, que processa Big Data para insights acionáveis e estratégias de entrada no mercado sem precedentes.</p>
+                </div>
+                <div class="glass-card service-item">
+                    <h3 contenteditable="true">Transformação Digital Acelerada</h3>
+                    <p contenteditable="true">Implementamos arquiteturas digitais robustas, migração para nuvem e integração de sistemas legados com tecnologias emergentes, garantindo uma transição suave e escalável para a era digital.</p>
+                </div>
+                <div class="glass-card service-item">
+                    <h3 contenteditable="true">Estratégias de Crescimento Exponencial</h3>
+                    <p contenteditable="true">Desenvolvemos planos de expansão agressivos e sustentáveis, utilizando modelos de IA para identificar novos nichos, otimizar portfólios e impulsionar a aquisição de clientes de alto valor.</p>
+                </div>
             </div>
+        </section>
+
+        <!-- Painel de Prova Social/Autoridade -->
+        <section id="autoridade" class="social-proof">
+            <div class="container">
+                <h2 contenteditable="true">Parceiros que Confiam em Nossa Visão Estratégica.</h2>
+                <p contenteditable="true" style="margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">Construímos o futuro de líderes de mercado. A confiança depositada em nós é o testemunho da inovação e dos resultados que entregamos.</p>
+                <div class="logos-grid">
+                    <div class="logo-item"><img src="https://via.placeholder.com/150x80/202020/00eaff?text=TECH+CORP" alt="Logo Cliente 1"></div>
+                    <div class="logo-item"><img src="https://via.placeholder.com/150x80/202020/00ff8c?text=GLOBAL+SOLUTIONS" alt="Logo Cliente 2"></div>
+                    <div class="logo-item"><img src="https://via.placeholder.com/150x80/202020/00eaff?text=INOVA+INDUSTRY" alt="Logo Cliente 3"></div>
+                    <div class="logo-item"><img src="https://via.placeholder.com/150x80/202020/00ff8c?text=ALPHA+VENTURES" alt="Logo Cliente 4"></div>
+                    <div class="logo-item"><img src="https://via.placeholder.com/150x80/202020/00eaff?text=QUANTUM+DATA" alt="Logo Cliente 5"></div>
+                    <div class="logo-item"><img src="https://via.placeholder.com/150x80/202020/00ff8c?text=SYNERGY+GROUP" alt="Logo Cliente 6"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formulário de Conversão Integrado e Minimalista -->
+        <section id="contato" class="conversion-form">
+            <div class="container">
+                <h2 contenteditable="true">Alcance o Próximo Nível. Fale com um Especialista.</h2>
+                <p contenteditable="true" style="margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;">Estamos prontos para entender seus desafios e moldar a estratégia de IA que irá impulsionar sua empresa para a liderança. Preencha o formulário e nossa equipe entrará em contato.</p>
+                <div class="glass-card form-card">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="nome">Seu Nome Completo:</label>
+                            <input type="text" id="nome" name="nome" placeholder="Ex: João da Silva" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="empresa">Nome da Empresa:</label>
+                            <input type="text" id="empresa" name="empresa" placeholder="Ex: Corporação X S.A." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail Corporativo:</label>
+                            <input type="email" id="email" name="email" placeholder="Ex: contato@empresa.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone (com DDD):</label>
+                            <input type="text" id="telefone" name="telefone" placeholder="Ex: (XX) XXXX-XXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensagem">Como podemos ajudar? (Opcional)</label>
+                            <textarea id="mensagem" name="mensagem" placeholder="Descreva brevemente seus objetivos ou desafios..."></textarea>
+                        </div>
+                        <button type="submit" class="btn form-submit-btn">Solicitar Consultoria Agora</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p contenteditable="true">&copy; 2024 Senku Ecosystem. Todos os direitos reservados. | Desenvolvido com Visão.</p>
+            <p contenteditable="true">
+                <a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a>
+            </p>
         </div>
-
-        <!-- BLOCO 02: ROCK -->
-        <div class="card-combo">
-            <div class="box-foto">
-                <svg viewBox="0 0 450 280" xmlns="http://w3.org">
-                    <defs>
-                        <linearGradient id="gradRock" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#0a0a0a;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#1c0206;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#gradRock)"/>
-                    <!-- Silhueta da Guitarra -->
-                    <path d="M190,150 Q160,120 190,90 Q220,120 190,150 Z" fill="#ff003c" transform="translate(35, -10) scale(1.4) rotate(45 190 120)"/>
-                    <line x1="160" y1="190" x2="270" y2="80" stroke="#ffffff" stroke-width="3"/>
-                    <line x1="260" y1="90" x2="285" y2="65" stroke="#ff003c" stroke-width="5"/>
-                    <text x="50%" y="45" font-family="sans-serif" font-size="11" fill="#8e8e8e" font-weight="bold" text-anchor="middle" letter-spacing="3">HEAVY ATTIRE</text>
-                </svg>
-            </div>
-            <div class="box-info">
-                <span class="tag-sub">Estilo Alternativo Bruto</span>
-                <div class="card-title">Punk & Rock Attitude</div>
-                <div class="card-text">Nossa linha de roupas personalizadas traz a essência clássica do rock de garagem e o minimalismo agressivo do punk de rua.</div>
-                <a href="#" class="btn-catalogo">Ver Linha Rock</a>
-            </div>
-        </div>
-
-        <!-- BLOCO 03: ANIME -->
-        <div class="card-combo">
-            <div class="box-foto">
-                <svg viewBox="0 0 450 280" xmlns="http://w3.org">
-                    <defs>
-                        <linearGradient id="gradAnime" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#140801;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#050505;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#gradAnime)"/>
-                    <!-- Linhas de Velocidade Mangá -->
-                    <path d="M225,140 L0,0 L40,0 Z" fill="#ff003c" fill-opacity="0.1"/>
-                    <path d="M225,140 L410,0 L450,0 Z" fill="#ff003c" fill-opacity="0.1"/>
-                    <path d="M225,140 L450,110 L450,160 Z" fill="#ff003c" fill-opacity="0.1"/>
-                    <circle cx="225" cy="140" r="50" fill="#ff003c" fill-opacity="0.8" style="filter: drop-shadow(0px 0px 10px #ff003c);"/>
-                    <text x="50%" y="45" font-family="sans-serif" font-size="11" fill="#ff003c" font-weight="bold" text-anchor="middle" letter-spacing="3">TOKYO CONCEPT</text>
-                </svg>
-            </div>
-            <div class="box-info">
-                <span class="tag-sub">Cultura Pop Japonesa</span>
-                <div class="card-title">Mundo dos Animes</div>
-                <div class="card-text">Moletons oversized, estampas em silk-screen de alta durabilidade e acessórios inspirados nas maiores sagas de mangás e animações do mundo.</div>
-                <a href="#" class="btn-catalogo">Ver Coleção Anime</a>
-            </div>
-        </div>
-    </div>
-
+    </footer>
 </body>
 </html>
